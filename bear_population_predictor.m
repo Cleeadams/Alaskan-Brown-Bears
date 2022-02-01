@@ -12,13 +12,13 @@ N = 30000;
   
   % Gender proportions
 m = .3;
-f = .33;
+f = .22;
 sm = .22;
 sf = .11;
 c = .15;
 
   % Harvest rates
-h = [.05, .067, .1];
+h = [0, .05, .067, .1];
 
   % Mortality rates
     % Cubs (0.5 - 1.5)
@@ -35,11 +35,11 @@ Female_M = .13;
 r = [.7, .76];
 
   % Prediction over 10 years
-time = 10
+time = 10;
 
 
 for i = 2:time
-  N(i) = N(i-1) * ( 1 + r(1) * (sf + f) ) - N(i-1) * ( h(1) + c * Cub_M(1)...
+  N(i) = N(i-1) * ( 1 + r(2) * (sf + f) ) - N(i-1) * ( h(1) + c * Cub_M(1)...
      + sm * Sub_M + sf * Sub_F + m * Male_M + f * Female_M )
 end
 
@@ -48,4 +48,4 @@ end
 plot(1:time, N)
 grid on
 
-
+N(10)/N(1)
