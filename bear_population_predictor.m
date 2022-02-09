@@ -4,6 +4,15 @@ close all
 clear 
 clc 
 
+    % Exponential growth rate -> y = N(1+G)^t
+    % Growth rate is -> dN/dt = r*N
+    % N(t) = N_0 e^(rt)
+    % dN/dt = rN(1-N/k)
+    % population growth rate
+
+
+
+
   % The population of Alaskan brown bears over time should equate to 30,000.
   
   % According to the Alaskan government the estimated population of brown 
@@ -34,28 +43,45 @@ Female_M = .07;
 
   % Reproductive rate for young adult females.
 r = .42;
+  
+  
+  % Gender proportions - (Wieglus and Bunnell, 1994) altered for Van Daele
+GP_VD = [.3, .22, .295, .185, 0];
+  % Mortality rate - (Von Daele, 2010)
+MR_VD = [.15,.07,.44,.11,0];
+  % Reproductive rate - (Von Daele, 2010) 
+r_VD = .42;
 
-  % Prediction over 10 years
-time = 11;
+  % Gender proportions - (Wieglus and Bunnell, 1994)
+GP_W = [.3, .22, .22, .11, .15];
+  % Mortality rate - (Wieglus and Bunnell, 1994)
+MR_W = [.3,.07,.11,.09,.22];
+  % Reproductive rate - (Wieglus and Bunnell, 1994)
+r_W = .46;
 
-    % Check to see if the article lines up with sf + f.
-##for i = 2:time
-##  N(i) = N(i-1) * ( 1 + r(2) * (sf+f) ) - N(i-1) * ( c * Cub_M(1)...
-##     + sm * Sub_M(1) + sf * Sub_F(1) + m * Male_M(1) + f * Female_M(1) )
-##end
+  % Gender proportions - (McLellan, 1989) - using Wieglus and Bunnell
+GP_FV = GP_W;
+  % Mortality rate - (McLellan, 1989) - Table 2
+MR_FV = [.18,.18,.06,.06,.15];
+  % Reproductive rate - (McLellan, 1989) - Table 2
+r_FV = .421;
 
-for i = 2:time
-  N(i) = N(i-1) * ( 1 + r * (sf+f) ) - N(i-1) * ( sm * Sub_M...
-     + sf * Sub_F + m * Male_M + f * Female_M )
-end
+  % Gender proportions - (McLellan, 1989) - using Wieglus and Bunnell
+GP_M = GP_W;
+  % Mortality rate - (McLellan, 1989)
+MR_M = [.24,.24,.31,.31,.67];
+  % Reproductive rate - (McLellan, 1989)
+r_M = .85;
 
-figure(1)
-plot(0:time-1, N, "linewidth", 2)
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population of Brown Bears", 'FontSize', 25)
-title("The Population of Alaskan Brown Bears", 'FontSize', 25)
-grid on
 
-gr = N(time)/N(1)
-1-gr
+      % Collect the average for mortality and reproductive rates.
+      GP_AVG = GP_W;
+      MR_AVG = (MR_VD + MR_W + MR_FV) / 3
+      r_AVG = (r_VD + r_W + r_FV) / 3
 
+
+GP = GP_AVG;
+MR = MR_AVG;
+r = r_AVG;
+
+PopFun(N,GP,MR,r)
