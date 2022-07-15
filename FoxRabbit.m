@@ -19,7 +19,7 @@ r_AVG = -0.016123;
 % r by McLellan
 r_M = -0.047100;
 
-r = r_AVG;
+r = r_FV;
 
 K = 50000;
 
@@ -33,20 +33,15 @@ t = 0:10;
   % hold on
   % grid on
 
-h = @(t,y)[r.*y(1).*(1-(y(1)/K))]
+h = @(t,y)[r.*y(1).*(1-(y(1)/K))];
 [t za] = ode45(h,t,[N]);
 
 figure(1)
 plot(t,za(:,1),'b')
 xlabel("Time (yrs)", 'FontSize', 25)
 ylabel("Population of Brown Bears", 'FontSize', 25)
-title("The Population of Alaskan Brown Bears", 'FontSize', 25)
+title("The Population of Alaskan Brown Bears Over Time", 'FontSize', 25)
 legend('Logistic', 'FontSize', 25)
 grid on
-
-
-
-
-
 
 
