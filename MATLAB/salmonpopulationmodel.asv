@@ -1,0 +1,19 @@
+%Population of salmon
+
+S = 10000000;
+k = 30000000;
+r = .1;
+dS =@(s) r*s*(1-s/k);
+
+salmon = @(t,s)[dS(s)];
+
+t = 0:.01:20;
+
+[t,pop] = ode45(salmon,t,S);
+
+
+% Plotting the population over the time duration
+figure(1)
+plot(t,pop)
+grid on
+
