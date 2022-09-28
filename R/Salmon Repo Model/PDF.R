@@ -2,11 +2,11 @@
 
 rm(list = ls())
 
-temp <- seq(-5,30,.1)
+temp <- seq(-7,37,.1)
 
-crit <- 24.4
+crit <- 20.43
 mu <- 14.3
-sigma <- (crit-mu)/3
+sigma <- (crit-mu)/.52
 sigma
 
 f <- 1 / (sigma * sqrt(2*pi)) *
@@ -23,3 +23,9 @@ plot(temp,f,
 grid(NULL,NULL,col='lightgrey',lty=6)
 lines(temp,f,lwd=5,col='darkorange')
 
+
+
+
+x <- 7.8
+z <- (x-mu)/sigma
+z
