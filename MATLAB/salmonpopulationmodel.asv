@@ -1,11 +1,18 @@
 %Population of salmon
 
-S = 10000000;
+S = 112358;
 k = 30000000;
-r = .1;
-dS =@(s) r*s*(1-s/k);
 
-salmon = @(t,s)[dS(s)];
+c = .0001;
+T_opt = 12.5;
+T = pi;
+r = log(5);
+
+R = r / (1 + c*(T-T_opt)^4);
+
+dS =@(s) R*s*(1-s/k);
+
+salmon = @(t,s)(dS(s));
 
 t = 0:.01:20;
 
@@ -14,6 +21,11 @@ t = 0:.01:20;
 
 % Plotting the population over the time duration
 figure(1)
-plot(t,pop)
+p = plot(t,pop,'Color',[0.8500 0.3250 0.0980],'LineWidth',4);
+xlabel("Time (yrs)", 'FontSize', 25)
+ylabel("Population of Salmon", 'FontSize', 25)
+str = "The Populat"
+title("The Population of Alaskan Salmon Over Time At 12.5", 'FontSize', 25)
+legend('Salmon', 'FontSize', 25, 'Location', 'West')
 grid on
 
