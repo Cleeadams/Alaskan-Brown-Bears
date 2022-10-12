@@ -1,12 +1,12 @@
-%Population of salmon
+%Population of salmon at different temperatures
 
 % S = 1000000;
 % k = 29100000;
 
-S = 20;
-k = 150;
+S = 1000000;
+k = 1500000;
 
-time_max = 200;
+time_max = 20;
 c = .0001;
 T_opt = 12.5;
 T = [12.5, 22.2, 30];
@@ -16,6 +16,7 @@ pop = zeros([time_max/.01+1,3]);
 
 for i = 1:3
     R = r / (1 + c*(T(i)-T_opt)^4);
+    disp(R)
 
     dS =@(s) R*s*(1-s/k);
 
@@ -45,6 +46,9 @@ ax = gca;
 grid on
 grid minor
 ax.MinorGridAlpha = 1;
+
 ax.GridAlpha = 1;
 set(gca,"FontSize",20)
+
+
 

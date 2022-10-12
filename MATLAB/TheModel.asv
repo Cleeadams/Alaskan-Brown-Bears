@@ -11,19 +11,19 @@ r_B = .016123;
 r_S = .32*log(5);
 
 % Carry capacity
-K_B = 5;
-K_S = 150;
+K_B = 150;
+K_S = 200;
 
 % Initial populations
 B_o = 3;
 S_o = 100;
 
 % Interaction terms
-c_B = 9e-05;
-c_S = 0;
+c_B = .0002;
+c_S = .0001;
 
 % Time duration starting at 1990.
-t=[0 500];
+t=[0 400];
 
 % Reproduction function parameters
 c = .0001;
