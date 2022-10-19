@@ -8,10 +8,10 @@ close all
     % Parameters
 % Reproduction rates
 r_B = .016123;
-r_S = .32*log(5);
+r_S = 5;
 
 % Carry capacity
-K_B = 5;
+K_B = 6;
 K_S = 150;
 
 % Initial populations
@@ -19,11 +19,11 @@ B_o = 3;
 S_o = 100;
 
 % Interaction terms
-c_B = 9e-05;
-c_S = 0;
+c_B = 0.00008;
+c_S = 0.08;
 
 % Time duration starting at 1990.
-t=[0 500];
+t=[0 300];
 
 % Reproduction function parameters
 c = .0001;
@@ -39,19 +39,20 @@ b_T = 9.54;
 T=@(t) r_T * t + b_T;
 
 % Reproduction function
-R=@(t) r_S / ( 1 + c*(T(t) - T_opt)^4 );
+R=@(t) .32*log( r_S / ( 1 + c*(T(t) - T_opt)^4 ) );
 
 % Bear ODE
 dB =@(y) c_B.*y(2).*y(1) - r_B.*y(2).*(1 - ( y(2)./K_B ) );
 
 % Salmon ODE
-dS =@(t,y) r_S .* ( 1 - ( y(1)./K_S ) ) - c_S.*y(2).*y(1);
+% dS =@(t,y) (R(t)-d).*s.*(1-s/k);
+dS =@(t,y) R(t) .* y(1)*( 1 - ( y(1)./K_S ) ) - c_S.*y(2).*y(1);
 
 % System of ODE function
 MODEL = @(t,y) [dS(t,y); dB(y)];
 
 % % System of ODE solver
-[t,pop] = ode45(MODEL, t, [S_o, B_o]);
+[t,pop] = ode15s(MODEL, t, [S_o, B_o]);
 % 
 % % Plotting the population over the time duration
 figure(1)
@@ -61,7 +62,7 @@ ylabel("Population", 'FontSize', 25)
 str = "The Population of Alaskan Salmon and Brown Bears Over Time";
 title(str,"Interpreter","Latex", 'FontSize', 35)
 grid on
-legend('Salmon', 'Brown Bear', 'FontSize', 25, 'Location', 'NorthWest')
+legend('Salmon', 'Brown Bear', 'FontSize', 25, 'Location', 'NorthEast')
 ax = gca;
 grid on
 % grid minor
