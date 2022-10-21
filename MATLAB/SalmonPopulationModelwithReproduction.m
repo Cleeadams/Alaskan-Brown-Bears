@@ -10,10 +10,11 @@ close all
 format long
 S = 10;
 k = 15;
-time_max = 300;
+time_max = 150;
 c = .0001;
 T_opt = 12.5;
 r = 5;
+d = .32;
 
 a = .08;
 b = 9.54;
@@ -21,7 +22,7 @@ b = 9.54;
 T = [12.5, 22.2, 30];
 pop = zeros([time_max/.1+1,3]);
 for i = 1:3
-    R = .32*log( r / (1 + c*(T(i)-T_opt)^4) );
+    R = log( d*r / (1 + c*(T(i)-T_opt)^4) );
 
     dS =@(s) R*s*(1-s/k);
 
@@ -54,11 +55,15 @@ ax.MinorGridAlpha = 1;
 ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 
+syms t
 
-T =@(t) a*t + b;
-R=@(t) .32*log( r / (1 + c*(T(t)-T_opt)^4) );
+R =@(t) d*r / (1 + c*(a*t + b-T_opt)^4);
 
-dS =@(t,s) R(t).*s.*(1-s/k);
+R_prime = diff(R(t),t);
+
+f =@(t) log(R(t)) + R_prime*t/R(t);
+
+dS =@(t,s) (log(8/(5*(((2*t)/25 - 74/25)^4/10000 + 1))) - (4*t*((2*t)/25 - 74/25)^3*(((2*t)/25 - 74/25)^4/16000 + 5/8))/(78125*(((2*t)/25 - 74/25)^4/10000 + 1)^2)).*s.*(1-s/k);
 
 salmon = @(t,s) [dS(t,s)];
 

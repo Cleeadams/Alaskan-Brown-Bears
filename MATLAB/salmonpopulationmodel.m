@@ -11,12 +11,11 @@ c = .0001;
 T_opt = 12.5;
 T = [12.5, 22.2, 30];
 r = 5;
-d = 0;
 
 pop = zeros([time_max/.01+1,3]);
 
 for i = 1:3
-    R = .32*log( r / (1 + c*(T(i)-T_opt)^4) );
+    R = log( .32*r / (1 + c*(T(i)-T_opt)^4) );
     disp(R)
 
     dS =@(s) R*s*(1-s/k);
