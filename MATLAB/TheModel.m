@@ -11,19 +11,19 @@ r_B = .016123;
 r_S = 5;
 
 % Carry capacity
-K_B = 6;
-K_S = 150;
+K_B = 5.5;
+K_S = 15;
 
 % Initial populations
+S_o = 4;
 B_o = 3;
-S_o = 100;
 
 % Interaction terms
-c_B = 0.00008;
-c_S = 0.04;
+c_S = 0.078;
+c_B = .000001;
 
 % Time duration starting at 1990.
-t=[0 400];
+t=[0 1000];
 
 % Reproduction function parameters
 c = .0001;
@@ -44,7 +44,7 @@ R =@(T) log( .32*r_S / ( 1 + c*(T - T_opt)^4 ) );
 r = R(T);
 
 % Bear ODE
-dB =@(y) c_B.*y(2).*y(1) - r_B.*y(2).*(1 - ( y(2)./K_B ) );
+dB =@(y) r_B.*y(2).*(1 - ( y(2)./K_B ) ) + c_B.*y(2).*y(1);
 
 % Salmon ODE
 % dS =@(t,y) (R(t)-d).*s.*(1-s/k);

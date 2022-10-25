@@ -7,20 +7,20 @@ close all
 
     % Parameters
 % Reproduction rates
-r_B = .016123;
+r_B = -.016123;
 r_S = 5;
 
 % Carry capacity
-K_B = 6;
-K_S = 150;
+K_B = 5.5;
+K_S = 15;
 
 % Initial populations
+S_o = 4;
 B_o = 3;
-S_o = 100;
 
 % Interaction terms
-c_B = 0.00008;
-c_S = 0.04;
+c_S = 0.078;
+c_B = .000001;
 
 % Time duration starting at 1990.
 t=[0 300];
