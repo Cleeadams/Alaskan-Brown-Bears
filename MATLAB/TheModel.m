@@ -11,19 +11,19 @@ r_B = .016123;
 r_S = 5;
 
 % Carry capacity
-K_B = 5.5;
-K_S = 15;
+K_B = 5;
+K_S = 10;
 
 % Initial populations
-S_o = 4;
-B_o = 3;
+S_o = 5;
+B_o = 1;
 
 % Interaction terms
-c_S = 0.078;
-c_B = .000001;
+c_S = 0.06;
+c_B = 0.02;
 
 % Time duration starting at 1990.
-t=[0 1000];
+t=[0 500];
 
 % Reproduction function parameters
 c = .0001;
@@ -64,14 +64,35 @@ plot(t, pop(:,2), 'r', 'LineWidth', 4)
 hold off
 xlabel("Time (yrs)", 'FontSize', 25)
 ylabel("Population", 'FontSize', 25)
-str = "The Population of Alaskan Salmon and Brown Bears Over Time";
+str = "The Autonomous Model";
 title(str,"Interpreter","Latex", 'FontSize', 35)
 grid on
 legend('Salmon', 'Brown Bear', 'FontSize', 25, 'Location', 'NorthEast')
 ax = gca;
 grid on
-% grid minor
-% ax.MinorGridAlpha = 1;
+
+
+
+% ============================================================
+
+% ============================================================
+
+for B = 1:2
+    for S = 5:6
+        [t,Y] = ode45(MODEL, t, [S, B]);
+
+        % Creates vector field
+        figure(2)
+        hold on
+        plot(S,B,'.','MarkerSize',20)
+        hold on
+        plot(Y(:,1),Y(:,2),'LineWidth',4)
+        grid on
+    end
+end
+xlabel('x (Salmon)', 'FontSize', 25)
+ylabel('y (Bears)', 'FontSize', 25)
+title('Curves of The Vector Field For The Autonomous Model', 'FontSize', 25)
 
 
 

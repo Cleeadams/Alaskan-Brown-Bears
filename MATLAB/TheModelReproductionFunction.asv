@@ -16,7 +16,7 @@ K_S = 10;
 
 % Initial populations
 S_o = 5;
-B_o = 1;
+B_o = 3;
 
 % Interaction terms
 c_S = .06;
@@ -65,7 +65,7 @@ plot(t, pop(:,2),'r', 'LineWidth', 4)
 hold off
 xlabel("Time (yrs)", 'FontSize', 25)
 ylabel("Population", 'FontSize', 25)
-str = "The Non-Autonomous Model";
+str = "The Population of Alaskan Salmon and Brown Bears Over Time";
 title(str,"Interpreter","Latex", 'FontSize', 35)
 grid on
 legend('Salmon', 'Brown Bear', 'FontSize', 25, 'Location', 'NorthEast')
@@ -99,14 +99,13 @@ for B = 1:2
         hold on
         plot(S,B,'.','MarkerSize',20)
         hold on
-        plot(Y(:,1),Y(:,2),'LineWidth',4)
+        plot(Y(:,1),Y(:,2),'LineWidth',2)
         grid on
     end
 end
-plot(0,5,'.','MarkerSize',20)
-xlabel('x (Salmon)', 'FontSize', 25)
-ylabel('y (Bears)', 'FontSize', 25)
-title('Curves of The Vector Field For The Non-Autonomous Model', 'FontSize', 25)
+xlabel('x (Salmon)')
+ylabel('y (Bears)')
+title('Curves of the vector field')
 
 % grid minor
 % ax.MinorGridAlpha = 1;
