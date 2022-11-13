@@ -1,4 +1,4 @@
-% Autonomous Model
+% Autonomous Vs Non-Autonomous
 
 clc
 clear
@@ -24,7 +24,7 @@ c_B = 0.0313;
 % c_B = .0008;
 
 % Time duration starting at 1990.
-t=[0 250];
+t = [0 250];
 
 % Reproduction function parameters
 c = .0001;
@@ -62,7 +62,6 @@ figure(1)
 plot(t, pop(:,1), 'b--', 'LineWidth', 4)
 hold on
 plot(t, pop(:,2), 'r', 'LineWidth', 4)
-hold off
 grid on
 ax = gca;
 ax.GridAlpha = 1;
@@ -71,41 +70,35 @@ grid minor
 ax.MinorGridAlpha = 1;
 xlabel("Time (yrs)", 'FontSize', 25)
 ylabel("Population", 'FontSize', 25)
-str = "The Autonomous Model";
+str = "Autonomous and Non-Autonomous Model";
 title(str,"Interpreter","Latex", 'FontSize', 35)
-legend('Salmon', 'Brown Bear', 'FontSize', 25, 'Location', 'NorthEast')
 
 
+    % Non-autonomous
 
-% ============================================================
+% Bear ODE
+dB =@(y) r_B.*y(2).*(1 - ( y(2)./K_B ) ) + c_B.*y(2).*y(1);
 
-% ============================================================
+% Salmon ODE
+% dS =@(t,y) (R(t)-d).*s.*(1-s/k);
+dS =@(t,y) (log(8/(5*(((2*t)/25 - 74/25)^4/10000 + 1))) -...
+    (4*t*((2*t)/25 - 74/25)^3*(((2*t)/25 - 74/25)^4/16000 +...
+    5/8))/(78125*(((2*t)/25 - 74/25)^4/10000 + 1)^2)).* y(1)*( 1 -...
+    ( y(1)./K_S ) ) - c_S.*y(2).*y(1);
 
-for B = 1:2
-    for S = 5:6
-        [t,Y] = ode45(MODEL, t, [S, B]);
+% System of ODE function
+MODEL = @(t,y) [dS(t,y); dB(y)];
 
-        % Creates vector field
-        figure(2)
-        hold on
-        plot(S,B,'.','MarkerSize',20)
-        hold on
-        plot(Y(:,1),Y(:,2),'LineWidth',4)
-        grid on
-    end
-end
-grid on
-ax = gca;
-ax.GridAlpha = 1;
-set(gca,"FontSize",20)
-grid minor
-ax.MinorGridAlpha = 1;
-xlabel('x (Salmon)', 'FontSize', 25)
-ylabel('y (Bears)', 'FontSize', 25)
-title('Solutions For The Autonomous Model', 'FontSize', 25)
-legend('$(18,\;1)$', '$(20,\;1)$', '$(18,\;3)$',...
-    '$(20,\;3)$',...
-    'Interpreter', 'Latex', 'FontSize', 20, 'Location', 'NorthEast')
+% % System of ODE solver
+[t,pop] = ode15s(MODEL, t, [S_o, B_o]);
+% 
+% % Plotting the population over the time duration
+figure(1)
+plot(t, pop(:,1),'g:', 'LineWidth', 4)
+hold on
+plot(t, pop(:,2),'k-.', 'LineWidth', 4)
+legend('Salmon (Auto)', 'Brown Bear (Auto)', 'Salmon (Non)', ...
+    'Brown Bear (Non)', 'FontSize', 25, 'Location', 'NorthEast')
 
 
 

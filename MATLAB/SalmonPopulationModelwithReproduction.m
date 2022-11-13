@@ -8,8 +8,8 @@ close all
 % k = 29100000;
 
 format long
-S = 10;
-k = 15;
+S = 20;
+k = 29.1;
 time_max = 150;
 c = .0001;
 T_opt = 12.5;
@@ -44,7 +44,7 @@ hold on
 p3 = plot(t,pop(:,3),':','Color',[0.0000 0.80 0.130],'LineWidth',4);
 hold on
 xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population of Salmon", 'FontSize', 25)
+ylabel("Population of Salmon (million)", 'FontSize', 25)
 str = "The Population of Alaskan Salmon Over Time";
 title(str,"Interpreter","Latex", 'FontSize', 35)
 ax = gca;
@@ -55,13 +55,15 @@ ax.MinorGridAlpha = 1;
 ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 
+
+
 syms t
 
-R =@(t) d*r / (1 + c*(a*t + b-T_opt)^4);
+R = d*r / (1 + c*(a*t + b-T_opt)^4);
 
-R_prime = diff(R(t),t);
+R_prime = diff(R);
 
-f =@(t) log(R(t)) + R_prime*t/R(t);
+f =@(t) log(R) + R_prime*t/R;
 
 dS =@(t,s) (log(8/(5*(((2*t)/25 - 74/25)^4/10000 + 1))) - (4*t*((2*t)/25 - 74/25)^3*(((2*t)/25 - 74/25)^4/16000 + 5/8))/(78125*(((2*t)/25 - 74/25)^4/10000 + 1)^2)).*s.*(1-s/k);
 
@@ -76,7 +78,8 @@ t = [0 time_max];
 % Plotting the population over the time duration
 figure(1)
 p4 = plot(t,pops,'-.','Color',[0.83,0.00,1.00],'LineWidth',4);
-legend('$12.5^{\circ}$C', '$22.2^{\circ}$C', '$30^{\circ}$C', 'R(t)',  'Interpreter', 'Latex', 'FontSize', 20, 'Location', 'NorthEast')
+legend('$12.5^{\circ}$C', '$22.2^{\circ}$C', '$30^{\circ}$C', 'R(t)',...
+    'Interpreter', 'Latex', 'FontSize', 20, 'Location', 'East')
 ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 

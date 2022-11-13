@@ -8,7 +8,7 @@ library(zoo)
 library(latex2exp)
 
 # Directory
-setwd("C:/Users/conno/OneDrive - Cal Poly Pomona/Thesis Project/Data")
+setwd("C:/Users/Connor/OneDrive/Desktop/GitHub/Alaskan-Brown-Bears/R/")
 
 # Load data frames
 tab1 <- read.delim("USGS River Temp/Battle")
@@ -180,20 +180,22 @@ mon.end <- 9
 
 # Plot data
 slr <- lm(SST~year)
-plot(year,SST,ylab=TeX(r'(Temperature ( $\degree$ C))'),
+plot(year,SST,
+     cex=1.8,
+     ylab=TeX(r'(Temperature ( $\degree$ C))'),
      xlab='Time (Yrs)',
      main='Average Annual Water Temperatures')
-grid(NULL,NULL,col='lightgrey',lty=6)
-points(year,SST,pch=19,cex=.7,col=4)
-abline(slr,lwd=2,col='darkorange')
+grid(NULL,NULL,col='lightgrey',lty=6,lwd=2)
+points(year,SST,pch=19,cex=1.5,col=4)
+abline(slr,lwd=5,col='darkorange')
 B_T <- slr$coef['year']; B_T
 A_T <- slr$coef['(Intercept)']; A_T
 timevalues <- seq(1980,2040,.1)
-lines(timevalues,goog*timevalues+A.avg,lwd=2,col='green')
+lines(timevalues,goog*timevalues+A.avg,lwd=5,col='green',lty=2)
 legend(1987,10.6,legend=c('Avg. of Data','Avg. of Trends'),
        col=c('darkorange','green'),
-       lty=1,
-       cex=.8
+       lty=c(1,2),
+       cex=1.4
        )
 # dynamic harmonic regression - fable library
 goog

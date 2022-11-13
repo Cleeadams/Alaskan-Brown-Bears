@@ -1,6 +1,6 @@
 # Comparing run versus weight of sockeye salmon in bristol bay
 
-setwd('C:/Users/Connor/OneDrive/Documents/Thesis/Salmon Escapement/Data')
+setwd('C:/Users/Connor/OneDrive/Desktop/GitHub/Alaskan-Brown-Bears/R/Salmon Escapement/Data')
 
 rm(list = ls())
 

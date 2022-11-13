@@ -17,6 +17,9 @@ k2 = 5;
 a1 = log(R(t)) + R_prime*t/R(t);
 b1 = a1 / k1;
 
+% When does a1 become negative?
+time_a1_0 = vpasolve(a1==0,70);
+
 a2 = .016123; % Making the reproduction rate for brown bears positive.
 b2 = a2 / k2;
 

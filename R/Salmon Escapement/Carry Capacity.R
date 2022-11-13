@@ -5,7 +5,7 @@ library(dplyr)
 library(tidyr)
 library(qpcR)
 
-setwd('C:/Users/Connor/OneDrive/Documents/Thesis/Salmon Escapement/Data')
+setwd('C:/Users/Connor/OneDrive/Desktop/GitHub/Alaskan-Brown-Bears/R/Salmon Escapement/Data')
 
 tab1 <- read.xlsx('2017.xlsx')
 tab2 <- read.xlsx('2018.xlsx')
@@ -30,3 +30,4 @@ for (i in tab) {
 mean(sumdf)
 boxplot(sumdf)
 median(sumdf)
+
