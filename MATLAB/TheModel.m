@@ -1,63 +1,57 @@
-% Autonomous Model
+% Solutions to the Autonomous Model
 
 clc
 clear
 close all
 
     % Parameters
-% Reproduction rates
-r_B = .044;
-r_S = 5;
+% Growth Rates
+r_y = .044;
+r_x = 5;
 
-% Carry capacity
-K_B = 5;
-K_S = 15;
+% Carry Capacity
+K_y = 5;
+K_x = 15;
 
-% Initial populations
-S_o = 5;
-B_o = 3;
+% Initial Populations
+x_o = 5;
+y_o = 3;
 
-% Interaction terms
-c_S = 0.0627;
-c_B = 0.0313;
-% c_S = .02;
-% c_B = .0008;
+% Interaction Terms
+c_x = 0.0627;
+c_y = 0.0313;
 
-% Time duration starting at 1990.
+    % Try these Parameters to see something a bit more realistic
+% c_x = .02;
+% c_y = .0008;
+
+% Time Duraction.
 t=[0 250];
 
-% Reproduction function parameters
+% Growth Rate Function Parameters
 c = .0001;
 T_opt = 12.5; % Celsius
 
-% Temperature function parameters
-r_T = 0.08;
-b_T = 9.54;
-
-
-    % Functions
-% Temperature function
-% T=@(t) r_T * t + b_T;
+% Temperature
 T = 12.5;
 
-% Reproduction function
-R =@(T) log( .32*r_S / ( 1 + c*(T - T_opt)^4 ) );
+% Growth Rate function
+R =@(T) log( .32*r_x / ( 1 + c*(T - T_opt)^4 ) );
 r = R(T);
 
 % Bear ODE
-dB =@(y) r_B.*y(2).*(1 - ( y(2)./K_B ) ) + c_B.*y(2).*y(1);
+dy =@(y) r_y.*y(2).*(1 - ( y(2)./K_y ) ) + c_y.*y(2).*y(1);
 
 % Salmon ODE
-% dS =@(t,y) (R(t)-d).*s.*(1-s/k);
-dS =@(t,y) r .* y(1)*( 1 - ( y(1)./K_S ) ) - c_S.*y(2).*y(1);
+dx =@(t,y) r .* y(1)*( 1 - ( y(1)./K_x ) ) - c_x.*y(2).*y(1);
 
 % System of ODE function
-MODEL = @(t,y) [dS(t,y); dB(y)];
+MODEL = @(t,y) [dx(t,y); dy(y)];
 
-% % System of ODE solver
-[t,pop] = ode15s(MODEL, t, [S_o, B_o]);
-% 
-% % Plotting the population over the time duration
+% System of ODE solver
+[t,pop] = ode15s(MODEL, t, [x_o, y_o]);
+
+% Plotting the Autonomous System Over the Time
 figure(1)
 plot(t, pop(:,1), 'b--', 'LineWidth', 4)
 hold on
@@ -73,27 +67,35 @@ xlabel("Time (yrs)", 'FontSize', 25)
 ylabel("Population", 'FontSize', 25)
 str = "The Autonomous Model";
 title(str,"Interpreter","Latex", 'FontSize', 35)
-legend('Salmon', 'Brown Bear', 'FontSize', 25, 'Location', 'NorthEast')
-
-
-
-% ============================================================
+legend('Salmon', 'Brown Bear', 'FontSize', 25, ...
+    'Location', 'NorthEast')
 
 % ============================================================
 
-for B = 1:2
-    for S = 5:6
-        [t,Y] = ode45(MODEL, t, [S, B]);
+% ============================================================
+
+% Plotting the Autonomous Model with Different Initial Populations
+for y = 1:2:3
+    for x = 3:2:5
+        % Solutions to the Autonomous System
+        [t,Y] = ode45(MODEL, t, [x, y]);
 
         % Creates vector field
         figure(2)
-        hold on
-        plot(S,B,'.','MarkerSize',20)
-        hold on
         plot(Y(:,1),Y(:,2),'LineWidth',4)
-        grid on
+        hold on
     end
 end
+for y = 1:2:3
+    for x = 3:2:5
+        % Plots the Initial Populations
+        figure(2)
+        plot(x,y,'ko','MarkerSize',8,'MarkerFaceColor','k')
+        hold on
+    end
+end
+% Plots the Critical Point
+plot(0.61,7.19,'ko','MarkerSize',12,'MarkerFaceColor','k')
 grid on
 ax = gca;
 ax.GridAlpha = 1;
@@ -103,9 +105,9 @@ ax.MinorGridAlpha = 1;
 xlabel('x (Salmon)', 'FontSize', 25)
 ylabel('y (Bears)', 'FontSize', 25)
 title('Solutions For The Autonomous Model', 'FontSize', 25)
-legend('$(18,\;1)$', '$(20,\;1)$', '$(18,\;3)$',...
-    '$(20,\;3)$',...
-    'Interpreter', 'Latex', 'FontSize', 20, 'Location', 'NorthEast')
+legend('$(3,\;1)$', '$(5,\;11)$', '$(3,\;3)$','$(5,\;3)$', ...
+    'Interpreter', 'Latex', 'FontSize', 20,...
+    'Location', 'NorthEast')
 
 
 

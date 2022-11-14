@@ -1,17 +1,21 @@
-% Jacobian of The Model
+% Jacobian Matrix of The Autonomous Model
 
+clear
 clc
 format rational
 
-
+% Parameters
 r_S = 5;
 c = .0001;
 T_opt = 12.5;
 
+% Growth Rate Dependent on Temperature
 R =@(T) log( .32*r_S / ( 1 + c*(T - T_opt)^4 ) );
 
+% Chosed Temp
 T = 12.5;
 
+% Theodore Modis Form of Parameters
 a1 = R(T);
 b1 = a1 / 15;
 c1 = .04;
@@ -19,7 +23,8 @@ a2 = -.016123;
 b2 = a2 / 6;
 c2 = .00008;
 
-fprintf('The water temperature will remain constant at T=%.1f\n\n',T)
+fprintf(['The water temperature will remain constant at' ...
+    ' T=%.1f\n\n'],T)
 % Jacobian for critical point (0,0)
 fprintf('The Jacobian for the critical point (0,0) is:')
 J_1 = [a1, 0; 0, a2];

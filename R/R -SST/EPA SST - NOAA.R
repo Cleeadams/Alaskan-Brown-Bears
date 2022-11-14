@@ -1,7 +1,7 @@
 # EPA CSV Sea Surface Temperarture
 
 # Directory
-setwd("C:/Users/conno/OneDrive - Cal Poly Pomona/Thesis Project/Data")
+setwd("C:/Users/Connor/OneDrive/Desktop/GitHub/Alaskan-Brown-Bears/R/Water Temp Data/")
 
 # Libraries
 library(latex2exp)

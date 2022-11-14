@@ -1,28 +1,26 @@
-% Exponential Decay Model for Fish.
+% Exponential Growth Model for Salmon.
 
 close all
 clear
 clc
 
-    % N_t = N_0 e^(-kt)
+    % dx/dt = r*x_0
 
-    % dN/dt = r*N_t
-N = 20;
+% Parameters
+x = 20;
 r = log(.32*5);
-% K = 20000;
 
 t = 0:.01:10;
 
+% Exponential ODE set up
 h = @(t,y)(r.*y(1));
-[t, za] = ode45(h,t,N);
-% h2 = @(t,y)(r.*y(1).*(1-(y(1)/K)));
-% [t,ze] = ode45(h2,t,N);
 
+% Solutions to the eponential ODE
+[t, za] = ode45(h,t,x);
+
+% Plot of the exponential growth model
 figure(1)
 plot(t,za(:,1),'c','LineWidth',4)
-% hold on
-% plot(t,ze(:,1),'r')
-% hold off
 xlabel("Time (yrs)", 'FontSize', 25)
 ylabel("Population", 'FontSize', 25)
 title("The Population of Salmon Over Time", 'FontSize', 25)

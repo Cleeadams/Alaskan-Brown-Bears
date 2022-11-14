@@ -165,18 +165,12 @@ avg.monthly<- aggregate(SST[month>=6 & month<=9 & year>=1950]~
                         data=df,FUN=mean)
 colnames(avg.monthly) <- c('year','SST')
 
-# Create a date column
-# avg.monthly$date <- with(avg.monthly, sprintf("%s-%02s", year, month))
-# avg.monthly$date <- as.yearmon(avg.monthly$date)
-
 # Attach data frame for ease of use
 attach(avg.monthly)
 
 # Focus on spawning months
 mon.begin <- 7
 mon.end <- 9
-# SST.focus <- subset(SST,month>=mon.begin & month<=mon.end)
-# date.focus <- subset(date,month>=mon.begin & month<=mon.end)
 
 # Plot data
 slr <- lm(SST~year)
@@ -205,15 +199,5 @@ lines(x,y.sin,
       col='red',
       lwd=2
       )
-resid.sin <- y.sin-SST
-sqrt(mean(resid.sin^2))
-sqrt(mean(resid(slr)^2))
-plot(x,resid.sin)
-plot(x,resid(slr))
-# plr
-plot(c(1990:2040),seq(7,10,.06))
-plr <- lm(SST~poly(year,degree=2,raw=TRUE))
-timevalues <- seq(1980,2040,.1)
-plr.sst <- predict(plr,newdata=data.frame(year=timevalues))
-lines(timevalues,15-plr.sst)
+
 

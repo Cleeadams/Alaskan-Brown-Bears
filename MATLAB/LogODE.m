@@ -1,12 +1,19 @@
+% Logistic growth as a function of x
 clc
 clear
 close all
 
+
+% Parameters
 r = .01;
 K = 10;
-N = 0:.1:K+1;
-y = r.*N.*(1-N./K);
-plot(N,y,'LineWidth',4)
+x = 0:.1:K+1;
+
+% Logistic Function
+y = r.*x.*(1-x./K);
+
+% Plotting Function
+plot(x,y,'LineWidth',4)
 ax = gca;
 ax.GridAlpha = 1;
 set(gca,"FontSize",20)

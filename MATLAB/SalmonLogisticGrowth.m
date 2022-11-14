@@ -1,27 +1,24 @@
-%Population of salmon at different temperatures
-
-% S = 1000000;
-% k = 29100000;
+% Salmon Logistic Growth
 
 clear
 close all
 clc
 
-S = 20;
+% Parameters
+x_0 = 20;
 k = 29.1;
-
-time_max = 20;
-c = .0001;
-T_opt = 12.5;
 r = log(0.32*5);
+time_max = 20;
 
-    dS =@(s) r*s*(1-s/k);
+t = 0:.01:time_max;
 
-    salmon = @(t,s)(dS(s));
+% Logistic Function
+dx =@(x) r*x*(1-x/k);
 
-    t = 0:.01:time_max;
+salmon = @(t,x)(dx(x));
 
-    [t,pops] = ode45(salmon,t,S);
+% Solutions to the Function
+[t,pops] = ode45(salmon,t,x_0);
 
 
 % Plotting the population over the time duration

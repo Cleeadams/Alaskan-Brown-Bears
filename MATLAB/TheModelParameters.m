@@ -1,21 +1,22 @@
-% 
+% Solutions to the Autonomous Model with Different 
+% Interaction Parameters
 
 clc
 clear
 close all
 
     % Parameters
-% Reproduction rates
-r_B = .044;
-r_S = 5;
+% Growth Rates
+r_y = .044;
+r_x = 5;
 
 % Carry capacity
-K_B = 5;
-K_S = 15;
+K_y = 5;
+K_x = 15;
 
 % Initial populations
-S_o = 5;
-B_o = 3;
+x_o = 5;
+y_o = 3;
 
 % Time duration starting at 1990.
 t=[0 250];
@@ -24,40 +25,31 @@ t=[0 250];
 c = .0001;
 T_opt = 12.5; % Celsius
 
-% Temperature function parameters
-r_T = 0.08;
-b_T = 9.54;
-
-
     % Functions
 % Temperature function
-% T=@(t) r_T * t + b_T;
 T = 12.5;
 
-% Reproduction function
-R =@(T) log( .32*r_S / ( 1 + c*(T - T_opt)^4 ) );
+% Growth Rate function
+R =@(T) log( .32*r_x / ( 1 + c*(T - T_opt)^4 ) );
 r = R(T);
 
-
-% ============================================================
-
-% ============================================================
 % Interaction parameters
 cMat = [0.02, .008; 0.09, .008; 0.09, .082; 0.0627, .0313];
 styles = ['-',"--",':','-.'];
 
 for i = 1:4
     % Bear ODE
-    dB =@(y) r_B.*y(2).*(1 - ( y(2)./K_B ) ) + cMat(i,2).*y(2).*y(1);
+    dy =@(y) r_y.*y(2).*(1 - ( y(2)./K_y ) ) +...
+        cMat(i,2).*y(2).*y(1);
     
     % Salmon ODE
-    % dS =@(t,y) (R(t)-d).*s.*(1-s/k);
-    dS =@(t,y) r .* y(1)*( 1 - ( y(1)./K_S ) ) - cMat(i,1).*y(2).*y(1);
+    dx =@(t,y) r .* y(1)*( 1 - ( y(1)./K_x ) ) -...
+        cMat(i,1).*y(2).*y(1);
     
-    % System of ODE function
-    MODEL = @(t,y) [dS(t,y); dB(y)];
+    % Autonomous System of ODE function
+    MODEL = @(t,y) [dx(t,y); dy(y)];
 
-    [t,Y] = ode45(MODEL, t, [S_o, B_o]);
+    [t,Y] = ode45(MODEL, t, [x_o, y_o]);
 
     % Creates vector field
     figure(2)
@@ -67,13 +59,17 @@ for i = 1:4
 end
 for i = 1:4
     % Critical Points
-    x_crit = (r*r_B/K_B - cMat(i,1)*r_B) / (cMat(i,1)*cMat(i,2) + (r/K_S)*(r_B/K_B));
-    y_crit = (r*cMat(i,2) + r/K_S*r_B) / (cMat(i,1)*cMat(i,2) + (r/K_S)*(r_B/K_B));
+    x_crit = (r*r_y/K_y - cMat(i,1)*r_y) /...
+        (cMat(i,1)*cMat(i,2) + (r/K_x)*(r_y/K_y));
+    y_crit = (r*cMat(i,2) + r/K_x*r_y) /...
+        (cMat(i,1)*cMat(i,2) + (r/K_x)*(r_y/K_y));
     
+    % Plots Critical Points
     plot(x_crit,y_crit,'ko','MarkerSize',8,'MarkerFaceColor','k')
     hold on
 end
-plot(S_o,B_o,'ko','MarkerSize',12,'MarkerFaceColor','k')
+% Plots the Initial Populations
+plot(x_o,y_o,'ko','MarkerSize',12,'MarkerFaceColor','k')
 grid on
 ax = gca;
 ax.GridAlpha = 1;
@@ -85,9 +81,10 @@ ylim([2,13]);
 xlabel('x (Salmon)', 'FontSize', 25)
 ylabel('y (Bears)', 'FontSize', 25)
 title('Solutions For The Autonomous Model', 'FontSize', 25)
-legend('$(0.02,\;0.008)$', '$(0.09,\;0.008)$', '$(0.09,\;0.082)$',...
-    '$(0.0627,\;0.0313)$',...
-    'Interpreter', 'Latex', 'FontSize', 20, 'Location', 'NorthEast')
+legend('$(0.02,\;0.008)$', '$(0.09,\;0.008)$', ...
+    '$(0.09,\;0.082)$', '$(0.0627,\;0.0313)$',...
+    'Interpreter', 'Latex', 'FontSize', 20, ...
+    'Location', 'NorthEast')
 
 
 
