@@ -37,23 +37,29 @@ end
 figure(1)
 p1 = plot(t,pop(:,1),'Color',[0.10,0.70,1.00],'LineWidth',4);
 hold on
-p2 = plot(t,pop(:,2),'Color',[0.8500 0.3250 0.0980],'LineWidth',4,'LineStyle','--');
+p2 = plot(t,pop(:,2),'Color',[0.8500 0.3250 0.0980],...
+    'LineWidth',4,'LineStyle','--');
 hold on
-p3 = plot(t,pop(:,3),'Color',[0.0000 0.80 0.130],'LineWidth',4,'LineStyle',':');
+p3 = plot(t,pop(:,3),'Color',[0.0000 0.80 0.130], ...
+    'LineWidth',4,'LineStyle',':');
 hold on
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population of Salmon (millions)", 'FontSize', 25)
-str = "The Population of Alaskan Salmon Over Time";
-title(str, 'FontSize', 35)
-legend('$12.5^{\circ}$C', '$22.2^{\circ}$C', '$30^{\circ}$C',...
-    'Interpreter', 'Latex', 'FontSize', 25, 'Location', 'East')
+set(gca,"FontSize",20)
+xlabel("Time (yrs)",'Interpreter', 'Latex', 'FontSize', 25)
+ylabel("Population (millions)",'Interpreter', ...
+    'Latex', 'FontSize', 25)
+% str = "The Population of Alaskan Salmon Over Time";
+% title(str,'Interpreter', 'Latex','FontSize', 25)
+legend('$12.5^{\circ}$C', '$22.2^{\circ}$C', ...
+    '$30^{\circ}$C',...
+    'Interpreter', 'Latex', 'FontSize', 25, ...
+    'Location', 'East')
 ax = gca;
 grid on
 grid minor
 ax.MinorGridAlpha = 1;
 
 ax.GridAlpha = 1;
-set(gca,"FontSize",20)
+
 
 
 

@@ -1,0 +1,11 @@
+In this chapter, we found the growth rate and carrying capacity for the salmon and brown bear species to be: $r_x=\ln(0.32*5)\approx0.47$, $K_x=29.1*10^6$, $r_y=0.059$, and $K_y=4.5*10^{4}$.
+A logistic model was used to represent both species, as shown below,
+\begin{equation*}
+    \frac{dx}{dt} = r_xx\left(1-\frac{x}{K_x}\right),
+\end{equation*}
+and
+\begin{equation*}
+    \frac{dy}{dt} = r_yy\left(1-\frac{y}{K_y}\right).
+\end{equation*}
+The solutions to these models show that the salmon species reaches its environmental limit in 14 years and the brown bears reach theirs in 100 years.
+Now that each species has a foundational model for their growth behavior, in the next chapter, we will create a function dependent on time that replaces the growth rate parameter for salmon.

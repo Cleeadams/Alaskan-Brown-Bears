@@ -1,0 +1,232 @@
+% This is a sample thesis file for CPP Math Grad Students to follow.
+% After downloading this file to your computer, save it with whatever name you wish.
+% Also download the file CPP.cls and save it in the same folder as this file.
+% Do not change the name of the file CPP.cls.
+\documentclass{CPP}
+
+% Include packages
+\usepackage{amsmath}             % Provides various math environments
+\usepackage{amssymb}             % Provides various math symbols
+\usepackage{amsthm}
+% Provides theorem environments
+\usepackage{graphicx}            % Provides ability to include images
+\usepackage[page]{appendix}      % Provides appendices environment
+\usepackage{float}
+\usepackage[colorlinks=True, allcolors=black]{hyperref}
+\usepackage{url}
+\usepackage[table, dvipsnames]{xcolor}
+\definecolor{lightgray}{gray}{.7}
+\usepackage{booktabs, xltabular, longtable}  % For tables
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{siunitx}
+\usepackage{color, colortbl}
+\usepackage{systeme}
+\usepackage{bm}
+\usepackage{listings}
+\usepackage{ragged2e}
+% \usepackage{setspace}
+
+\usepackage{tablefootnote}
+
+
+% ============================================================================= %
+  
+\begin{document}
+
+% Enter the information indicated inside the curly brackets below
+\titleone{Alaskan Brown Bears and Pacific Salmon}
+\titletwo{Face the Effects of Global Warming}
+\titlethree{}
+\doctype{Thesis}
+\doctypeUp{Thesis}
+\degree{Master of Science}
+\field{Mathematics}
+\Author{Connor Adams}
+\Advisor{Hubertus Von Bremen}
+\MemberA{Berit Givens}
+\MemberB{Jennifer Switkes}
+\Year{2022}
+\Semester{Fall}
+
+% Type your abstract inside the curly brackets below
+\Abstract{\input{Intros/Abstract}}
+
+% Type your acknowledgments inside the curly brackets below
+\Acknowledgments{\input{Intros/Acknowledgement}}
+
+% The following generates a title page, a signature page, an acknowledgments 
+% page, an abstract page, and a table of contents
+\titlepage
+\signaturepage{\addcontentsline{toc}{chapter}{Signature Page}}
+\acknowledgmentspage{\addcontentsline{toc}{chapter}{Acknowledgements}}
+\abstractpage{\addcontentsline{toc}{chapter}{Abstract}}
+\tableofcontents
+
+% Comment out either or both of the following two lines to remove
+% the List of Figures and/or List of Tables, as is appropriate for your thesis
+\listoftables{\addcontentsline{toc}{chapter}{List of Tables}}
+\listoffigures{\addcontentsline{toc}{chapter}{List of Figures}}
+
+% Reset the page counter for the main body of the thesis
+\newpage
+\pagenumbering{arabic} \setcounter{page}{1} \thispagestyle{empty}
+
+% The \AddChap command should be issued before the first chapter to update
+% the display style in the Table of Contents
+\AddChap
+
+% ----------------------------------------------------------------------------- %
+
+% Change the titles of Chapters and Sections below as desired.
+
+% ----------------------------------------------------------------------------- %
+\chapter{Introduction}
+
+\input{Intros/Introduction}
+
+% ----------------------------------------------------------------------------- %
+
+% \chapter{Background}
+
+% \section{Climate Change}
+
+% \input{Body/Chapter 2/GlobalWarmingBackground}
+
+% \section{Logistic Growth Model}
+
+% \input{Body/Chapter 2/Differential Equations}
+
+% \section{Lotka-Volterra Model}
+
+% \input{Body/Chapter 2/Lotka-Voltera}
+
+% \section{Trace-Determinant Plane}
+
+% \input{Background/Trace-Determinant Plane}
+
+% ----------------------------------------------------------------------------- %
+
+\chapter{Logistic Models For The Species}
+
+\input{Body/Chapter 3/Intro}
+
+% \section{Logistic Models}
+
+% \input{Body/Chapter 3/Logistic Models.tex}
+
+\section{Logistic Model For Pacific Salmon}
+
+\input{Body/Chapter 3/Something Fishy}
+
+\section{Logistic Model For Alaskan Brown Bears}
+
+\input{Body/Chapter 3/KeepingUpWithTheBrownBears}
+
+\section{Conclusion}
+
+\input{Body/Chapter 3/Conclusion}
+
+\chapter{Salmon Growth Rate Function}
+
+\input{Body/Chapter 4/Intro}
+
+\section{Growth Rate Function Dependent on Temperature}
+
+\input{Body/Chapter 4/Salmon Reproduction}
+
+\section{Temperature Function Dependent on Time}
+
+\input{Body/Chapter 4/Sea Temperatures}
+
+\section{Conclusion}
+
+\input{Body/Chapter 4/Conclusion}
+
+\chapter{Interaction Between Species}
+
+\input{Body/Chapter 5/Intro}
+
+\section{Lotka-Volterra Equations}
+
+\input{Body/Chapter 5/Lotka-Volterra.tex}
+
+\section{Introducing Interaction}
+
+\input{Body/Chapter 5/Final Model}
+
+\section{Critical Points and Their Stability}
+
+\input{Body/Chapter 5/Critical Points.tex}
+
+% \section{Picking Interaction Parameters}
+
+% \input{Body/Chapter 5/Analysis}
+
+\section{Non-Autonomous System of ODEs}
+
+\input{Body/Chapter 5/Non-Autonomous}
+
+\section{Conclusion}
+
+\input{Body/Chapter 5/Conclusion}
+
+\chapter{Conclusion}
+
+\input{Conclusions/Conclusion V2}
+
+% ----------------------------------------------------------------------------- %
+
+% BIBLIOGRAPHY
+ 
+% The \SuppChap command should be issued before the bibliography to update
+% the display style in the Table of Contents
+\SuppChap
+
+\newpage
+ 
+%\begin{thebibliography}{99}
+%
+%\bibitem{Lamport} 
+%Leslie Lamport,
+%\textit{\LaTeX: A Document Preparation System},
+%Addison-Wesley Professional,
+%2nd Edition,
+%1994
+%
+%\end{thebibliography}
+\bibliographystyle{ieeetr}
+\urlstyle{same}
+\bibliography{CitationsBrownBears.bib}
+\addcontentsline{toc}{chapter}{{Bibliography}}
+
+\clearpage
+
+% ----------------------------------------------------------------------------- %
+
+% APPENDICES
+
+% The \AddAppendix command should be issued before the first appendix to update
+% the display style in the Table of Contents
+\AddAppendix
+
+\appendix
+
+\chapter{TABLES}\label{appendix:salmon}
+
+\input{Appendix/Salmon}
+
+\chapter{R Code}\label{appendix:RCode}
+
+\input{Appendix/R}
+
+\chapter{MATLAB Code}\label{appendix:MatlabCode}
+
+\input{Appendix/MATLAB}
+
+
+
+% ----------------------------------------------------------------------------- %
+
+\end{document}
+
+

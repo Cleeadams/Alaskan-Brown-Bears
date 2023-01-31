@@ -17,7 +17,7 @@ k2 = 5;
 a1 = R(T);
 b1 = a1 / k1;
 
-a2 = .044;
+a2 = .059;
 b2 = a2 / k2;
 
 % Symbolic Values for the Interaction Parameters and Populations
@@ -86,11 +86,11 @@ ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 grid minor
 ax.MinorGridAlpha = 1;
-title('\textbf{Trace: T}','Interpreter','Latex', ...
-    'FontSize',25)
+% title('Trace: $\mathrm{T}$','Interpreter','Latex', ...
+%     'FontSize',25)
 xlabel('$c_{xy}$','Interpreter','Latex','FontSize',30)
 ylabel('$c_{yx}$','Interpreter','Latex','FontSize',30)
-zlabel('\textbf{T}','Interpreter','Latex','FontSize',22)
+zlabel('$\textrm{T}$','Interpreter','Latex','FontSize',22)
 
 % The Determinate of the Jacobian
 D = det(A);
@@ -136,10 +136,10 @@ grid minor
 ax.MinorGridAlpha = 1;
 xlabel('$c_{xy}$','Interpreter','Latex','FontSize',30)
 ylabel('$c_{yx}$','Interpreter','Latex','FontSize',30)
-zlabel('$\textbf{T}^2-4$\textbf{D}','Interpreter','Latex', ...
+zlabel('$\mathrm{T}^2-4\mathrm{D}$','Interpreter','Latex', ...
     'FontSize',22)
-title('\textbf{Discriminant: T$^2-4$D}','Interpreter','Latex', ...
-    'FontSize',25)
+% title('Discriminant: $\mathrm{T}^2-4\mathrm{D}$','Interpreter','Latex', ...
+%     'FontSize',25)
 
 
 

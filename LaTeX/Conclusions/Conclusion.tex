@@ -1,0 +1,12 @@
+In this thesis, the Alaskan brown bear and pacific salmon populations were modeled using a combination of the logistic growth equation, Lotka-Volterra equations, and a tailored function that simulates the salmon growth rate with respect to time.
+The models we constructed were used to compare outcomes of the species' populations when  climate temperature is stable versus increasing with time.
+We found that both species were affected by global warming, with the salmon population facing dangers of extinction.
+Our models are designed to reflect the behaviors of each species, where the growth rate function plays a vital role in controlling the outcomes of both populations.
+In the future, we plan to explore different growth rate functions that may provide a more accurate representation of their behaviors.
+A growth rate function we considered was:
+\begin{equation*}
+    G(t) = \ln\left(\frac{5}{1+1^{-4}(0.08t-2.96)^4}\right) - 0.68,
+\end{equation*}
+where we subtract the mortality rate of the salmon harvested by commercial fisheries instead of multiplying the reproduction rate of salmon by its survival rate~\cite{NPS}.
+While this is one other way of interpreting the growth rate, there are a many more to explore and incorporate into our model.
+

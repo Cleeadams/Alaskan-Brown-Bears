@@ -6,6 +6,11 @@ rm(list=ls())
 # Libraries
 library(zoo)
 library(latex2exp)
+library(showtext)
+
+font_add_google("Playfair Display", "playfair")
+showtext_auto()
+showtext_opts(dpi = 96)
 
 # Directory
 setwd("C:/Users/Connor/OneDrive/Desktop/GitHub/Alaskan-Brown-Bears/R/")
@@ -144,16 +149,24 @@ A[r,1] <- slr$coef['(Intercept)']
 plot(avg.monthly.tab$year,avg.monthly.tab$SST,
      ylab=TeX(r'(Temeperature ( $\degree$ C))'),
      xlab='Time (yrs)',
-     main=substitute(paste('Annual Water Temperature for ',
-                           a),
-                     list(a=site.name[r]))
+     family = 'playfair',
+     cex.lab=1.3,
+     cex=1.75,
+     cex.axis=1.3
+     # main=substitute(paste('Annual Water Temperature for ',
+     #                       a),
+     #                 list(a=site.name[r]))
      )
 grid(NULL,NULL,col='lightgrey',lty=6)
+legend('topleft',inset = .025,legend=c(site.name[r]),
+       col=c('darkorange'), lty=1, cex=1
+       )
 points(avg.monthly.tab$year,avg.monthly.tab$SST,
        pch=19,
-       cex=.7,
-       col=4)
-abline(slr,lwd=2,col='darkorange')
+       cex=1.47,
+       col=4
+       )
+abline(slr,lwd=5,col='darkorange')
 }
 glog <- median(B[1:nrow(B),]); glog
 goog <- mean(B[1:nrow(B),]); goog
@@ -175,18 +188,21 @@ mon.end <- 9
 # Plot data
 slr <- lm(SST~year)
 plot(year,SST,
-     cex=1.8,
+     family = 'playfair',
+     cex.lab=1.3,
+     cex=1.75,
+     cex.axis=1.3,
      ylab=TeX(r'(Temperature ( $\degree$ C))'),
-     xlab='Time (Yrs)',
-     main='Average Annual Water Temperatures')
-grid(NULL,NULL,col='lightgrey',lty=6,lwd=2)
-points(year,SST,pch=19,cex=1.5,col=4)
+     xlab='Time (Yrs)')
+     # main='Average Annual Water Temperatures')
+grid(NULL,NULL,col='lightgrey',lty=6)
+points(year,SST,pch=19,cex=1.47,col=4)
 abline(slr,lwd=5,col='darkorange')
 B_T <- slr$coef['year']; B_T
 A_T <- slr$coef['(Intercept)']; A_T
 timevalues <- seq(1980,2040,.1)
 lines(timevalues,goog*timevalues+A.avg,lwd=5,col='green',lty=2)
-legend(1987,10.6,legend=c('Avg. of Data','Avg. of Trends'),
+legend('topleft',inset=.025,legend=c('Avg. of Data','Avg. of Trends'),
        col=c('darkorange','green'),
        lty=c(1,2),
        cex=1.4
@@ -199,5 +215,4 @@ lines(x,y.sin,
       col='red',
       lwd=2
       )
-
 

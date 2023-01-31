@@ -21,16 +21,18 @@ h = @(t,y)(r.*y(1));
 % Plot of the exponential growth model
 figure(1)
 plot(t,za(:,1),'c','LineWidth',4)
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population", 'FontSize', 25)
-title("The Population of Salmon Over Time", 'FontSize', 25)
-legend('Exponential', 'FontSize', 20, 'Location', 'NorthWest')
+set(gca,'FontSize',20)
+xlabel("Time (yrs)",'Interpreter','latex', 'FontSize', 25)
+ylabel("Population",'Interpreter','latex','FontSize', 25)
+% title("The Population of Salmon Over Time",'Interpreter', ...
+%     'latex', 'FontSize', 25)
+legend('Salmon', 'FontSize', 20, 'Location', 'NorthWest')
 grid on
 grid minor
 ax = gca;
 ax.GridAlpha = 1;
 ax.MinorGridAlpha = 1;
-set(gca,'FontSize',20)
+
 
 
 

@@ -6,7 +6,7 @@ close all
 
     % Parameters
 % Growth Rates
-r_y = .044;
+r_y = .059;
 r_x = 5;
 
 % Carry Capacity
@@ -57,15 +57,16 @@ plot(t, pop(:,1), 'b--', 'LineWidth', 4)
 hold on
 plot(t, pop(:,2), 'r', 'LineWidth', 4)
 grid on
+ylim([0,11])
 ax = gca;
 ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 grid minor
 ax.MinorGridAlpha = 1;
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population", 'FontSize', 25)
-str = "Autonomous and Non-Autonomous Model";
-title(str,"Interpreter","Latex", 'FontSize', 35)
+xlabel("Time (yrs)","Interpreter","Latex", 'FontSize', 25)
+ylabel("Population","Interpreter","Latex", 'FontSize', 25)
+% str = "Autonomous and Non-Autonomous Model";
+% title(str,"Interpreter","Latex", 'FontSize', 25)
 
 % ============================================================
 

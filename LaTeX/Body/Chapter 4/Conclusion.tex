@@ -1,0 +1,18 @@
+In this chapter, we proposed a salmon growth rate function that depends on water temperature.
+We used river temperature data from the United States Geological Survey (USGS) to design a function that models the increase in Alaskan river temperature over time, which can be seen below,
+\begin{equation*}
+    T(t) = a*t + b,
+\end{equation*}
+where $a=0.08$, and $b=9.54$.
+Also, $t=0$ represents the current year, 2022.
+We then make the growth rate function dependent on time by replacing the temperature parameter $T$ with the temperature function, as shown bellow,
+\begin{equation*}
+    \begin{array}{ll}
+        G(t) &= R(t) + \scalebox{1.2}{$\frac{P'(t)t}{P(t)}$} \\[.2cm]
+         &= \ln\left(\scalebox{1.2}{$\frac{0.32*5}{1+10^{-4}(0.08t-2.96)^4}$}\right) - \scalebox{1.2}{$\frac{4*10^{-4}*0.08t(0.08t-2.96)^3}{1+10^{-4}(0.08t-2.96)^4}$}.
+    \end{array}
+\end{equation*}
+Lastly, we replaced this new growth rate function with the growth rate parameter in the original logistic model, \equationautorefname~\eqref{eq:fishlogistic}, and compare its results.
+We found that after approximately 100 years, the salmon population will begin to decline and eventually die off or migrate elsewhere.
+In the next chapter, we will examine the effect of interaction between the brown bear and salmon species.
+We will compare the results of the interaction with and without the growth rate function.

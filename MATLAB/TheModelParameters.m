@@ -7,7 +7,7 @@ close all
 
     % Parameters
 % Growth Rates
-r_y = .044;
+r_y = .059;
 r_x = 5;
 
 % Carry capacity
@@ -76,13 +76,16 @@ ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 grid minor
 ax.MinorGridAlpha = 1;
-xlim([0,12]);
+xlim([0,14]);
 ylim([2,13]);
-xlabel('x (Salmon)', 'FontSize', 25)
-ylabel('y (Bears)', 'FontSize', 25)
-title('Solutions For The Autonomous Model', 'FontSize', 25)
-legend('$(0.02,\;0.008)$', '$(0.09,\;0.008)$', ...
-    '$(0.09,\;0.082)$', '$(0.0627,\;0.0313)$',...
+xlabel('x (Salmon)','Interpreter', 'Latex', 'FontSize', 25)
+ylabel('y (Bears)','Interpreter', 'Latex', 'FontSize', 25)
+% title('Solutions For The Autonomous Model','Interpreter', ...
+%     'Latex', 'FontSize', 25)
+legend('$c_{xy}=0.02,\;c_{yx}=0.008$', ...
+    '$c_{xy}=0.09,\;c_{yx}=0.008$', ...
+    '$c_{xy}=0.09,\;c_{yx}=0.082$', ...
+    '$c_{xy}=0.0627,\;c_{yx}=0.0313$',...
     'Interpreter', 'Latex', 'FontSize', 20, ...
     'Location', 'NorthEast')
 

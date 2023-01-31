@@ -24,10 +24,12 @@ salmon = @(t,x)(dx(x));
 % Plotting the population over the time duration
 figure(1)
 p1 = plot(t,pops,'Color',[0.10,0.70,1.00],'LineWidth',4);
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population of Salmon (millions)", 'FontSize', 25)
+set(gca,"FontSize",20)
+xlabel("Time (yrs)",'Interpreter','latex', 'FontSize', 25)
+ylabel("Population (millions)",'Interpreter', ...
+    'latex', 'FontSize', 25)
 str = "The Population of Alaskan Salmon Over Time";
-title(str, 'FontSize', 35)
+% title(str,'Interpreter','latex', 'FontSize', 25)
 legend('Salmon', 'FontSize', 25, 'Location', 'NorthWest')
 ax = gca;
 grid on
@@ -35,7 +37,7 @@ grid minor
 ax.MinorGridAlpha = 1;
 
 ax.GridAlpha = 1;
-set(gca,"FontSize",20)
+
 
 
 

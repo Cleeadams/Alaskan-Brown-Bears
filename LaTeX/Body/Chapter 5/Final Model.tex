@@ -1,0 +1,32 @@
+Currently, we have constructed models for both species that represent their populations without the influence of each other. 
+% The models found in \equationautorefname~\eqref{eq:LogBear} and \equationautorefname~\eqref{eq:salmonlogisticrepo} are designed to individually represent the species' populations.
+% This means that the outcome of one species does not affect the other.
+By including interaction terms for both models, we can simulate a trade-off of environmental resources, as we would see in the real world.
+First, we use a variation of Theodore Modis' model, \equationautorefname~\eqref{eq:modislotkavoltera}, to introduce interaction between the brown bears and salmon when both species are unaffected by climate change,
+\begin{equation}\label{eq:AutonomousSystemODEs}
+    \begin{aligned}
+    \frac{dx}{dt} &=r_xx\left(1-\frac{x}{K_x}\right) - c_{xy}xy,\\[.4cm]
+    \frac{dy}{dt} &=r_yy\left(1-\frac{y}{K_y}\right) + c_{yx}xy,
+    \end{aligned}
+\end{equation}
+where $r_x = \ln(0.32*5),\ r_y=0.059,$ and $c_{xy},\;c_{yx}>0$. \equationautorefname s~\eqref{eq:fishlogistic} and~\eqref{eq:LogBear} represent the base models of the above system of differential equations where both species are unaffected by climate change.
+Notice, for the salmon ODE, we subtract its interaction term, but for the brown bears, we add its interaction term.
+We do this because the salmon population should have a negative consequence when there is an increase in brown bears.
+In contrast, brown bears should be rewarded when their food source increases.
+The interaction parameters alter the effect of the carrying capacity, so we change $K_x = 15$ and $K_y=5$ as a vague measure of their environmental limits.
+We can rewrite the system of equations in a similar form to Theodore Modis' model, as shown below,
+\begin{equation}
+    \begin{aligned}
+    \frac{dx}{dt} &= r_xx -\frac{r_xx^2}{K_x} - c_{xy}xy,\\[.4cm]
+    \frac{dy}{dt} &=r_yy -\frac{r_yy^2}{K_y} + c_{yx}xy.
+    \end{aligned}
+\end{equation}
+Then, substituting $ a_x = r_x$, $\displaystyle b_x = \frac{r_x}{K_x}$, $a_y = r_y$, and $\displaystyle b_y = \frac{r_y}{K_y}$ we get
+\begin{equation}\label{eq:AutonomousSystemODEsModis}
+    \begin{aligned}
+    \frac{dx}{dt} &= a_xx - b_xx^2 - c_{xy}xy,\\
+    \frac{dy}{dt} &= a_yy - b_yy^2 + c_{yx}xy.
+    \end{aligned}
+\end{equation}
+Condensing the model reduces the number of parameters in each equation, which makes the model and any operations done to the model more readable and interpretable.
+In the next section, we determine how different values for the parameters, $c_{xy}$ and $c_{yx}$, control the stability of the populations near their critical points.

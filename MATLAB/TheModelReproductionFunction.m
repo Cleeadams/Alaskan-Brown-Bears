@@ -6,7 +6,7 @@ close all
 
     % Parameters
 % Growth Rates
-r_y = .044;
+r_y = .059;
 r_x = 5;
 
 % Carry Capacity
@@ -55,10 +55,10 @@ ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 grid minor
 ax.MinorGridAlpha = 1;
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population", 'FontSize', 25)
-str = "The Non-Autonomous Model";
-title(str,"Interpreter","Latex", 'FontSize', 35)
+xlabel("Time (yrs)","Interpreter","Latex", 'FontSize', 25)
+ylabel("Population","Interpreter","Latex", 'FontSize', 25)
+% str = "The Non-Autonomous Model";
+% title(str,"Interpreter","Latex", 'FontSize', 25)
 legend('Salmon', 'Brown Bear', 'FontSize', 25, 'Location', 'NorthEast')
 
 % ============================================================
@@ -97,9 +97,10 @@ ax.GridAlpha = 1;
 set(gca,"FontSize",20)
 grid minor
 ax.MinorGridAlpha = 1;
-xlabel('x (Salmon)', 'FontSize', 25)
-ylabel('y (Bears)', 'FontSize', 25)
-title('Solutions For The Non-Autonomous Model', 'FontSize', 25)
+xlabel('x (Salmon)',"Interpreter","Latex", 'FontSize', 25)
+ylabel('y (Bears)',"Interpreter","Latex", 'FontSize', 25)
+% title('Solutions For The Non-Autonomous Model', ...
+%     "Interpreter","Latex", 'FontSize', 25)
 legend('$(3,\;1)$', '$(5,\;1)$', '$(3,\;3)$',...
     '$(5,\;3)$',...
     'Interpreter', 'Latex', 'FontSize', 20, 'Location', 'NorthEast')

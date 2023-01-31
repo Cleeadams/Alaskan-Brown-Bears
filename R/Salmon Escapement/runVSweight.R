@@ -4,6 +4,14 @@ setwd('C:/Users/Connor/OneDrive/Desktop/GitHub/Alaskan-Brown-Bears/R/Salmon Esca
 
 rm(list = ls())
 
+# Libraries
+library(showtext)
+
+font_add_google("Playfair Display", "playfair")
+showtext_auto()
+showtext_opts(dpi = 96)
+
+
 # Average Weight of Salmon During Annual Run
 weight <- c(6.7,6.1,6.3,5.8,6.3,5.7,5.8,5.8,5.9,5.5,6.2,5.7,
            6,5.6,5.2,5.4,5.5,5.1,5.1,5.1,4.7)
@@ -23,15 +31,18 @@ cor(df$Weight,df$Run)
 
 # Scatter Plot of The Two Variables
 plot(df$Weight,df$Run,
-     main = 'Sockeye Run Vs. Average Weight',
+     # main = 'Sockeye Run Vs. Average Weight',
      xlab = 'Weight (lbs)',
+     # xlab = 'Time (yrs)',
      ylab = 'Run Size (mil)',
      cex = 2,
      col = 4,
      pch = 19,
      weight = 2,
      cex.main = 1.5,
-     cex.lab = 1.5
+     cex.lab = 1.3,
+     cex.axis = 1.3,
+     family='playfair'
      )
 
 grid(NULL,NULL,col='lightgrey',lty=6)

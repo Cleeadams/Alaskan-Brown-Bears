@@ -1,0 +1,137 @@
+In the analysis of this model, we will solve for the equilibrium points and report the outcomes at those points as well as what happens in between.
+
+First, we can find the critical points of the model by solving the system of nonlinear equations when the derivative is equal to zero.
+\[
+\begin{aligned}
+    0 &=R(T)F\left(1-\frac{F}{K_F}\right) - c_{FN}FN\\[.4cm]
+    0 &=rN\left(1-\frac{N}{K_N}\right) + c_{NF}FN
+\end{aligned}
+\]
+The most obvious is points are $(0,0)$, $(K_F,0)$, and $(0,K_N)$.
+The next equilibrium point occurs is when:
+\[
+-c_{NF} FN= rN\left(1-\frac{N}{K_N}\right)
+\]
+\[
+-c_{NF}F = r\left(1-\frac{N}{K_N}\right)
+\]
+\[
+F = \frac{r}{-c_{NF}}\left(1-\frac{N}{K_N}\right)
+\]
+By applying the same steps above to the top equation in the model we get:
+\[
+N=\frac{R(T)}{c_{FN}}\left(1-\frac{F}{K_F}\right)
+\]
+Now, treating these as a system of linear equations will make finding the equilibrium much easier.
+\[
+\begin{aligned}
+    F - \frac{rN}{c_{NF}K_N} &= -\frac{r}{c_{NF}}\\[.4cm]
+    \frac{R(T)}{c_{FN}K_F}F + N &= \frac{R(T)}{c_{FN}}
+\end{aligned}
+\]
+Multiply the bottom row by $\frac{c_{NF}}{r}$ and add to the top, we get:
+\[
+F\left(1+\frac{rR(T)}{c_{NF}K_Nc_{FN}K_F}\right) = \frac{rR(T)}{c_{NF}K_Nc_{FN}}-\frac{r}{c_{NF}}
+\]
+Now, solving for F we get:
+\[
+F = \frac{rc_{NF}\left(R(T)-K_Nc_{FN}\right)}{c_{NF}^2K_Nc_{FN}} * \frac{K_NK_Fc_{NF}c_{FN}}{K_NK_Fc_{NF}c_{FN}+rR(T)}
+\]
+\[
+F = \frac{rK_F(R(T)-K_Nc_{FN})}{K_NK_Fc_{NF}c_{FN}+rR(T)}
+\]
+Then, solving for $N$, we get:
+\[
+N = \frac{R(T)}{c_{FN}}\left(1-\frac{\frac{rK_F(R(T)-K_Nc_{FN})}{K_NK_Fc_{NF}c_{FN}+rR(T)}}{K_F}\right)
+\]
+\[
+N = \frac{R(T)}{c_{FN}}\left(1-\frac{K_F(K_NK_Fc_{NF}c_{FN}+rR(T))}{rK_F(R(T)-K_Nc_{FN})}\right)
+\]
+\[
+N = \frac{R(T)}{c_{FN}}\left(\frac{rK_F(R(T)-K_Nc_{FN})-K_F(K_NK_Fc_{NF}c_{FN}+rR(T))}{rK_F(R(T)-K_Nc_{FN})}\right)
+\]
+\[
+N = \frac{R(T)}{c_{FN}}\left(\frac{-rK_Nc_{FN}-K_NK_Fc_{NF}c_{FN}}{r(R(T)-K_Nc_{FN})}\right)
+\]
+\[
+N = \frac{R(T)K_N(-r-K_Fc_{NF})}{r(R(T)-K_Nc_{FN})}
+\]
+\[
+N = \frac{R(T)K_N(r+K_Fc_{NF})}{r(K_Nc_{FN}-R(T))}
+\]
+From here, we can establish that there is an critical point at:
+\[
+\left(\frac{rK_F(R(T)-K_Nc_{FN})}{K_NK_Fc_{NF}c_{FN}+rR(T)}, \frac{R(T)K_N(r+K_Fc_{NF})}{r(K_Nc_{FN}-R(T))}\right)
+\]
+The beauty of this point is that it contains the reproduction function, $R(T)$, which implies that the point moves as temperature, $T(t)$, changes, which will as time, $t$, increases.
+
+Now, to evaluate what happens at these critical points, we will be looking at the Jacobian matrix of the model.
+First, let:
+\[
+\begin{aligned}
+    f_1(F,N) &= R(T)F\left(1-\frac{F}{K_F}\right) - c_{FN}FN\\[.4cm]
+    f_2(F,N) &= rN\left(1-\frac{N}{K_N}\right) + c_{NF}FN
+\end{aligned}0
+\]
+So, the Jacobian is below:
+\[
+\mathbf{J}_{(F,N)} =
+\begin{bmatrix}
+  \frac{\partial f_1}{\partial F} & 
+    \frac{\partial f_1 }{\partial N}\\
+  \frac{\partial f_2}{\partial F} & 
+    \frac{\partial f_2}{\partial N}
+\end{bmatrix}
+=
+\begin{bmatrix}
+  R(T)-2\frac{R(T)F}{K_F}-c_{FN}N & 
+    -c_{FN}F\\
+  c_{NF}N & 
+    r-2\frac{rN}{K_N}+c_{NF}F
+\end{bmatrix}
+\]
+Now, the Jacobian matrix for the critical points are:
+\begin{enumerate}
+    \item $(0,0)$
+    \[
+    \mathbf{J}_{(0,0)} =
+    \begin{bmatrix}
+  R(T) & & &
+    0\\
+  0 & & & r
+    \end{bmatrix}
+    \]
+    \item $(K_F,0)$
+    \[
+    \mathbf{J}_{(K_F,0)} =
+    \begin{bmatrix}
+  -R(T) & & & -c_{FN}K_F\\
+  0 & & & r+c_{NF}K_F
+    \end{bmatrix}
+    \]
+    \item $(0,K_N)$
+    \[
+    \mathbf{J}_{(0,K_N)} =
+    \begin{bmatrix}
+  R(T)-c_{FN}K_N & & & 0\\
+  c_{NF}K_N & & & -r
+    \end{bmatrix}
+    \]
+    \item $(F_c, N_c)=$ $\left(\frac{rK_F(R(T)-K_Nc_{FN})}{K_NK_Fc_{NF}c_{FN}+rR(T)}, \frac{R(T)K_N(r+K_Fc_{NF})}{r(K_Nc_{FN}-R(T))}\right)$
+    \[
+    \mathbf{J}_{(F_c,N_c)} =
+    \begin{bmatrix}
+  R(T)-2\frac{R(T)F_c}{K_F}-c_{FN}N_c & & & 
+    -c_{FN}F_c\\
+  c_{NF}N_c & & &
+    r-2\frac{rN_c}{K_N}+c_{NF}F_c
+    \end{bmatrix}
+    \]
+\end{enumerate}
+
+To analyze what happens at each critical point, we can look at the eigenvalues of the Jacobian matrix. Notice with the first critical point, $(0,0)$, the Jacobian matrix is diagonal which implies that the eigenvalues are the diagonal values:
+\[
+\lambda_1=R(T),\quad \lambda_2=r
+\]
+If 
+The next critical point, $(K_F,0)$

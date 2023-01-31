@@ -1,0 +1,30 @@
+In nature, most animals share their environment, which sometimes causes species to interact, like salmon and brown bears. 
+This relationship can be portrayed by incorporating interaction terms into each species' population equation.
+% The interaction terms depend on both species’ populations and use positive real parameters to describe the effect of one species on the other.
+The Lotka-Volterra model, also referred to as the predator-prey model, is a simple system of two nonlinear ordinary differential equations that utilize interaction terms to imitate the relationship between two species~\cite{anisiu2014lotka},
+\begin{equation}\label{eq:lotkavoltera}
+    \begin{aligned}
+        \frac{dx}{dt} & = \alpha x - \beta xy,\\
+        \frac{dy}{dt} & = \delta xy - \gamma y.
+    \end{aligned}
+\end{equation}
+Consider $x$ as the prey, $y$ as the predator, and $\alpha$, $\beta$, $\delta$, $\gamma$ are positive real parameters that describe the interaction of the two species. 
+Also, $\displaystyle \frac{dx}{dt}$ and $\displaystyle \frac{dy}{dt}$ represent each species' instantaneous population rate of change. 
+The interaction term for species $x$ is subtracted from the exponential growth component, $\alpha x$, to describe that the instantaneous growth rate of species $x$ will decrease as $y$ increases. The opposite effect happens to species $y$ because its interaction term is added instead of subtracted.
+The author of ``US Nobel laureates: Logistic growth versus Volterra–Lotka'', Theodore Modis, developed a competitive predator-prey model that implements logistic growth into the Lotka-Volterra equations,
+\begin{equation}\label{eq:modislotkavoltera}
+    \begin{aligned}
+    \frac{dx}{dt} &= a_xx - b_xx^2 + c_{xy}xy,\\
+    \frac{dy}{dt} &= a_yy - b_yy^2 + c_{yx}xy,
+    \end{aligned}
+\end{equation}
+where $a_{x}$, $a_{y}$, $b_{x}$, $b_{y}$, $c_{xy}$ and $c_{yx}$ are real parameters that describe the interaction of the two species~\cite{modis2011us}.
+
+
+
+% This model is describing two species who have an interaction with themselves, which is the logistic equation, and an interaction with each other, which is the interaction terms added at the end of each equation.
+
+% The fundamentals of each of these equations will be used in the construction of our model. 
+% The Lotka-Volterra will assist in the illustrating interaction between species while the logistic equations will be used to describe the environmental limits of each species.
+
+

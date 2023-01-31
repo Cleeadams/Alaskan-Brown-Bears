@@ -1,0 +1,38 @@
+% In the first section of chapter 2, we introduced the discussion of climate change and reported predictions of future global temperatures.
+% Researchers anticipate that the earth's surface temperature will increase an average of $3.2^{\circ}$C by the $22^{nd}$ century~\cite{raftery2017less}.
+% In the remaining chapter sections, we reviewed the logistic growth,  Lotka-Volterra, and competitive predator-prey equations, which we use throughout the thesis to describe the interactive relationship between Alaskan brown bears and pacific salmon.
+
+In chapter 2, we use the logistic growth model to simulate the population of both species, Alaskan brown bears and pacific salmon.
+In the first section, we estimated the growth rate parameter, $r_x = \ln(0.32*5)$, for salmon using reports from the Alaskan Department of Fish and Game.
+We estimated the salmon's carrying capacity, $K_x=29.1*10^6$ by calculating the maximum volume of salmon in Bristol Bay, Alaska, for any given inshore run.
+In the second section, we approximate the growth rate parameter, $r_y=0.059$, for brown bears by taking the average of three growth rates reported in three articles.
+Using information from the Alaskan Department of Fish and Game, we estimated a parameter value, $K_y=4.5*10^4$, for the carrying capacity of the brown bear species.
+Ultimately, we found that after 14 years, the salmon population should reach its environmental capacity if they start with an initial population of 20 million, and the brown bears will reach their environmental capacity in approximately 100 years if they begin with an initial population of 30 thousand.
+
+In the first section of chapter 3, we use data from Dr. Phyllis Weber Scannel and Katherine Carter to approximate the proportion of salmon who survive spawning migration at different temperatures.
+We develop a survival proportion function dependent on temperature for migrating salmon by fitting a curve to our approximated survival proportions.
+Combining this function with the growth rate parameter of salmon found in chapter 2, we propose a growth rate function dependent on temperature.
+In the next section of chapter 3, we used river temperature data from the United States Geological Survey to design a function that models the increase in Alaskan river temperature over time.
+Substituting the temperature equation for the temperature parameter in the growth rate function proposed in the first section changes the growth rate for salmon to a function of time.
+We found that after 100 years, the water temperature for salmon will become too hot to survive spawning migration, resulting in their regional extinction.
+
+In chapter 4, we introduce interaction terms to both species' logistic models using a variation of Theodore Modis' system of ordinary differential equations.
+In the second section of chapter 4, we analyze different interaction parameters for the model when neither species is affected by climate change.
+After testing different parameters, we chose $c_{xy} = 0.0627$ and $c_{yx} = 0.0313$ to represent the interaction between the species and evaluated the solutions to the autonomous system.
+The solutions to the autonomous model showed that when neither species is affected by climate change, the brown bears will overtake the salmon, and both species will oscillate toward their equilibrium point, $(0.79,\;7.1)$.
+In the third section, we incorporate climate change into the autonomous system by making the growth rate a function of time, creating a non-autonomous model.
+Using the interaction parameters in the previous section,  we analyzed the behavior of both species by plotting the solutions to the non-autonomous model with different initial conditions.
+When comparing the two models proposed in this chapter, we found that as the temperature begins to leave the optimal range, the solutions to the non-autonomous model separate from those of the autonomous one, forcing the entire salmon population to become regional extinct from Alaska, and the brown bear population converging to its carrying capacity.
+
+Plenty of variations of our non-autonomous model can be implemented to improve its accuracy.
+While the logistic growth equation is useful for modeling population growth, another is age-structure models.
+With brown bears and salmon having different survival and reproduction rates at different ages, an age-structure model might be more effective for predicting their behaviors~\cite{daele2010management,palstra2009age}.
+Another aspect of our model worth exploring is growth rate functions.
+A limitation we faced in developing a growth rate function for the salmon species was the need for more research in determining survival rates for migrating salmon at different temperatures.
+% Another growth rate function we considered using was
+% \begin{equation*}
+%     G(t) = r_x*P(t) - d,
+% \end{equation*} 
+% where $P(t)$ would represent the salmon survival proportions with respect to time, $r_x$ represents the growth rate parameter, and $d$ is the death rate for the pacific salmon.
+Lastly, the Alaskan Department of Fish and Game reports that they adjust harvest rates periodically for brown bears to maintain their population size, so including a term to represent the change in harvest rates would significantly improve the accuracy of our model~\cite{daele2010management}.
+We hope our model is used in further research to protect salmon and brown bears from the extreme weather that global warming will bring.

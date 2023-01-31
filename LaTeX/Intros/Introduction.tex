@@ -1,0 +1,104 @@
+The topic of climate change has been debated for many years, with some people believing that global warming is a myth and misusing scientific research to support their claims~\cite{allchin2015global}.
+% Since the beginning of the 20$^{th}$ century, global temperatures have been increasing on average, with little to no evidence of stopping~\cite{NOAA}.
+Many researchers have concluded that the earth's temperature has increased significantly since the early 20$^\text{th}$ century and will continue to increase until at least the mid to late 21$^\text{st}$ century~\cite{hansen2006global,raftery2017less,osterkamp1990thermal}.
+A group of researchers implemented a joint Bayesian hierarchical model, which determined that global temperatures will likely increase by an average of $3.2^{\circ}$C entering the 22$^\text{nd}$ century~\cite{raftery2017less}.
+% which sparked the creation of a new lifestyle \cite{crowley2000causes}.
+When the industrial revolution began, a significant amount of greenhouse gases, such as carbon dioxide, methane, nitrous oxide, and fluorinated gases, filled our atmosphere, acting as a canopy that prevents heat from escaping the atmosphere, thus causing an escalation in climate temperature~\cite{crowley2000causes, osterkamp1990thermal, epagreen}.
+In 2019, the EPA reported that 80\% of the earth's greenhouse gases are carbon dioxide~\cite{epagreen}.
+Because of the high demand for transportation, electricity, industrial production, and residential/commercial use of fossil fuels, carbon dioxide will continue to be the primary cause of greenhouse gas emissions~\cite{epagreen}.
+% Trees, plants, and the ocean are part of the carbon cycle, which removes massive amounts of carbon dioxide from the atmosphere.
+% Carbon dioxide emissions have been declining slowly over the past 15 years, so global temperature trends may decrease in the near future~\cite{epagreen}.
+Now realizing the damage we have done to the earth, we are trying to resolve the problem without sacrificing our comfort. 
+Unfortunately, this realization is too late for some species, such as the polar and koala bears~\cite{adams2011modelling,wiig2008effects, stirling2012effects}.
+In this thesis, we investigate the effects of climate change on a pair of species known to interact with each other, pacific salmon \emph{Oncorhynchus} and Alaskan brown bears \emph{Ursus arctos}.
+% In this thesis, we review various nonlinear differential equation models while implementing the Lotka-Volterra equations to simulate the effects of climate change on interactive species such as; brown bears with salmon.
+% Nonlinear differential equations will be used to model species that follow logistic growth pattern. An inspiration of the Lotka-Volterra equation is used in representing the interaction between two species.
+% The primary focus of this work is to display the effects of climate change and illustrate the potential dangers that may lie ahead if a solution isn't discovered.
+% Currently, some sea life animals are starting to experience the side effects of global warming.
+% One species in particular facing the effects of sea temperature change are pacific salmon \emph{Oncorhynchus}.
+
+Pacific salmon are sensitive to their environment and rely on sufficient river temperatures to survive spawning migration~\cite{ADFG}.
+Adult salmon live in the ocean, but when the time comes to reproduce, they swim up river streams to lay their eggs and usually die shortly after; this is referred to as spawning. 
+Salmon like to begin their journey from salt water to fresh water between late spring and early summer, but this depends on the species and location of pacific salmon \cite{ADFG}.
+Specifically in Alaska, salmon can be seen spawning in river streams between the middle of July through late October \cite{lisi2013association}.
+As river temperatures rise, the months in which they spawn and where they spawn may change, respectively~\cite{taylor2008climate}.
+Thus, global warming could affect the population of pacific salmon as well as any species that interact with them. 
+% This doesn't seem like a big deal since in theory their spawning time will just change \cite{ADFG}. 
+% Well, Alaskan brown bears feed off salmon during this time and this is a large portion of their diet.
+
+Alaskan brown bears feed on salmon as they migrate upstream, and if the population of salmon is susceptible to changes in temperature, then the brown bears could also be affected.
+Bears hibernate during winter and emerge during spring. 
+Once emerged, they consume an enormous amount of food, such as berries, roots of plants, squirrels, moose, caribou, and fish~\cite{ADFG}.
+Alaskan brown bears have various food sources, but salmon is an essential part of their diet, consuming an average of 1099 kg per year~\cite{deacy2018phenological,hilderbrand1999effect}. 
+% If the change in sea temperature directly effects the lives of salmon, then we can expect to see the lives of those that depend on that food source to be negatively effected, like brown bears.
+Pacific salmon are already migrating further north, where temperatures are more suitable for them~\cite{taylor2008climate}.
+Since salmon is an essential food source for brown bears, it is probable that the species will either migrate with the salmon or look for another abundant resource to feed on~\cite{hilderbrand1999effect}.
+% So, some of these side effects consist of the migration of salmon to temperatures that better suit them; therefore resulting in the possible migration of brown bears, replacement of salmon as a food source, or even a reduction in population if unable to compensate in the loss of a food source. In order for the brown bear population to live on, they will need to eventually adapt to this new environment they are approaching.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % Chapter 2
+% In chapter 2, we provide background information on the effects of global warming as well as the causes for the increase in the earth's climate temperature since the early 20$^{th}$ century.
+% We also briefly mention global temperature predictions for the next hundred years.
+% For the remaining sections of the chapter, we review population and interaction models, such as exponential growth, logistic growth, and Lotka-Volterra equations, which we use to construct our models.
+% Lastly, we finish the chapter by reviewing Theodore Modis' competitive predator-prey model, which we use in chapter 5 to introduce an interaction between the species.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Chapter 2
+In chapter 2, we use the logistic growth equation to model the population growth of pacific salmon and Alaskan brown bears.
+We begin by estimating the growth rate parameter for salmon using the reproduction rate from the Western Fisheries Research Center (WFRC) and the proportion of escapement from the National Park Service (NPS).
+Then, using data from the 2021 Bristol Bay annual management report, we calculate the carrying capacity by determining the maximum volume of salmon for any given run.
+Next, we compare growth rates from 3 different articles and calculate their average to approximate our growth rate for the brown bear model.
+Lastly, we pick a carrying capacity for the brown bears using information published by the Alaskan Department of Fish and Game (ADFG).
+
+
+% Chapter 3 begins the model creation processes by constructing differential equations that illustrates the population of the brown bears, as well as the pacific salmon species in Alaska. 
+% Next, to incorporate the influence of temperature on salmon, a reproductive rate function is designed to reflect the change in reproduction depending on temperature. 
+% This chapter concludes with a final function that models water temperature change in Alaskan rivers and streams for the past 20 years.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Chapter 3
+In Chapter 3, we propose a salmon growth rate function dependent on time, which replaces the growth rate parameter in the salmon logistic model.
+We use articles by Dr. Phyllis Weber Scannell and Katherine Carter to model the proportion of salmon that survive spawning migration at different temperatures.
+Applying linear regression to 30 years of recorded Alaskan river data, we create a function to represent the change in Alaskan river temperature over time.
+With this temperature function, we redesign the survival proportion model as a function of time.
+Now, we construct the proposed salmon growth rate function by combining the growth rate parameter with the survival proportion function.
+Finally, the growth rate function, $G(t)$, replaces the growth rate parameter in the salmon logistic model, creating a non-autonomous model for the salmon species.
+% Chapter 4 continues the model creation process by combining the individual functions and equations in chapter 3 to construct a model that demonstrates the outcome of the salmon and brown bear species over time.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Chapter 4
+In Chapter 4, we begin by constructing a variation of Theodore Modis' model to introduce interaction between Alaskan brown bears and pacific salmon when neither species is affected by climate change.
+We then solve for the critical points of our model and determine their stability by finding the eigenvalues of the Jacobian matrix.
+% We then evaluate our model's stability by finding the eigenvalues of the Jacobian matrix for each critical point.
+We explore different interaction parameters and visualize their effect by comparing the plots of our model's solutions for each pair of parameters.
+Next, we fix the interaction parameters to $c_{xy} = 0.0627$, and $c_{yx} = 0.0313$, then plot each species population with respect to time.
+We determine that the brown bear population will surpass the salmon population before both species oscillate toward their critical point, $(x=0.79,\;y=7.1)$.
+Following this section, we introduce climate change into our model, letting the function, $G(t)$, represent the growth rate of salmon.
+We then plot the solutions of the model using different initial conditions.
+% We test different initial conditions and evaluate the stability of the model.
+To compare the effects of climate change, we plot the solutions to this model with respect to time on top of the previous model's plot and denote the differences.
+Lastly, we find that global warming causes the salmon species in Alaska to become regionally extinct, and in response to a diminished food resource, the brown bear species decrease in size relative to their population without the influence of climate change.
+% Using the autonomous system of ODEs, we establish values for the interaction terms by deducing a criterion for the pair of parameters, then selecting a few from the criteria to analyze their effects on the model.
+% Lastly, we compare the solutions to the autonomous and non-autonomous models.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The purpose of this paper is to examine how the changing of the earth's temperature could affect the population of animals whose food source is relatively sensitive to environmental temperature, such as brown bears and salmon. 
+% We will be using a modified predator-prey model that represents the population of Alaskan brown bears and salmon, which demonstrates the effects of climate change on both species.
+% Ideally, this model could be applied to other interacting species that fall under similar conditions.
+% For example, species that are strongly dependent on agriculture as a food source.
+% Hopefully, this model will be used as a tool for scientists that assists in predicting the population of a species, which could influence government decisions on harvest rates, assist in determining the best place to relocate a species, or even design future models that would aid in predicting migration patterns of species that rely on similar parameters.

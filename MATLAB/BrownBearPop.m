@@ -8,11 +8,11 @@ clc
 y_0 = 30000;
 
 % r by Van Daele
-r_VD = 0.012;
+r_VD = 0.014;
 % r by McLellan (Table 2)
 r_FV = 0.081;
 % r by McLellan
-r_M = 0.084;
+r_M = 0.082;
 % r by the average
 r_AVG = mean([r_VD,r_FV,r_M]);
 
@@ -24,13 +24,13 @@ K = 45000;
 
 % Time Intervals
 % t = 0:3:120;
-t = 0:6:400;
+t = 0:3:120;
 
 
-legendNames{1} = 'Van Daele, r_y = 0.012';
+legendNames{1} = 'Van Daele, r_y = 0.014';
 legendNames{2} = 'McLellan89, r_y = 0.081';
-legendNames{3} = 'McLellan96, r_y = 0.085';
-legendNames{4} = 'Average, r_y = 0.044';
+legendNames{3} = 'McLellan96, r_y = 0.082';
+legendNames{4} = 'Average, r_y = 0.059';
 
 % line properties
 % List a bunch of markers; they will be selected in 
@@ -69,15 +69,16 @@ end
 h = @(t,y) r(4).*y(1).*(1-(y(1)/K));
 [t za] = ode45(h,t,y_0);
 plot(t,za(:,1),"Color",'c','LineWidth',5)
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Population of Brown Bears", 'FontSize', 25)
-title("The Population of Alaskan Brown Bears Over Time", ...
+set(gca,"FontSize",20)
+xlabel("Time (yrs)",'Interpreter','latex', 'FontSize', 25)
+ylabel("Population",'Interpreter','latex', ...
     'FontSize', 25)
+% title("The Population of Alaskan Brown Bears Over Time", ...
+%     'Interpreter','latex','FontSize', 25)
 legend(legendNames, 'FontSize', 20,'Location','SouthEast')
 grid on
 ax = gca;
 ax.GridAlpha = 1;
-set(gca,"FontSize",20)
 grid minor
 ax.MinorGridAlpha = 1;
 

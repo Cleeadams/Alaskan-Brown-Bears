@@ -35,9 +35,12 @@ grid minor
 ax.MinorGridAlpha = 1;
 ax.GridAlpha = 1;
 set(gca,"FontSize",20)
-xlabel("Time (yrs)", 'FontSize', 25)
-ylabel("Growth Rate", 'FontSize', 25)
-title('Growth Rate Function', "FontSize",30)
+xlabel("Time (yrs)",'Interpreter', 'Latex', ...
+    'FontSize', 25)
+ylabel("Growth Rate",'Interpreter', 'Latex', ...
+    'FontSize', 25)
+% title('Growth Rate Function','Interpreter',...
+%     'Latex', "FontSize",25)
 ylim([-2.5,.55])
 
 
